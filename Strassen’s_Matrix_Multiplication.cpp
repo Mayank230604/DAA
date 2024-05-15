@@ -122,16 +122,21 @@ vector<vector<int>> inputMatrix(int n) {
 
 int main() {
     int n;
-    cout << "Enter the size of square matrices: ";
+    cout << "Enter the size of square matrices (must be a power of 2): ";
     cin >> n;
 
     // Input matrix A
     cout << "Enter matrix A:" << endl;
     vector<vector<int>> A = inputMatrix(n);
 
-    // Input matrix B
     cout << "Enter matrix B:" << endl;
     vector<vector<int>> B = inputMatrix(n);
+
+    // Check if the size of the matrices is a power of 2
+    if ((n & (n - 1)) != 0) {
+        cout << "Error: Matrix size must be a power of 2." << endl;
+        return 1;
+    }
 
     // Calculate the result using Strassen's algorithm
     vector<vector<int>> C = strassen(A, B);
@@ -150,3 +155,4 @@ int main() {
 
     return 0;
 }
+
