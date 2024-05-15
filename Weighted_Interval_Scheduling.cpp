@@ -17,7 +17,7 @@ bool compareIntervals(const Interval& a, const Interval& b) {
 }
 
 // Function to find the latest non-overlapping interval that ends before the current interval
-int latestNonOverlappingInterval(const vector<Interval>& intervals, int index) {
+int latestNonOverlappingInterval(vector<Interval>& intervals, int index) {
     for (int i = index - 1; i >= 0; i--) {
         if (intervals[i].end <= intervals[index].start) {
             return i;
@@ -27,7 +27,7 @@ int latestNonOverlappingInterval(const vector<Interval>& intervals, int index) {
 }
 
 // Function to solve the weighted interval scheduling problem
-int weightedIntervalScheduling(const vector<Interval>& intervals) {
+int weightedIntervalScheduling(vector<Interval>& intervals) {
     int n = intervals.size();
     vector<int> dp(n); // dp[i] stores the maximum weight that can be obtained by considering intervals[0] to intervals[i]
 
